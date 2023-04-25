@@ -6,6 +6,11 @@ const { yellow, green, gray, blue } = require('chalk')
 const youtube = require('./youtube')
 const downloader = require('./downloader')
 const app = express()
+const express = require("express");
+const cors = require("cors");
+const ytdl = require("ytdl-core");
+// const app = express();
+// const fs = require("fs");
 
 function listen (port, callback = () => {}) {
   app.use(nofavicon())
@@ -43,8 +48,7 @@ function listen (port, callback = () => {}) {
     }
   })
 
-
-app.get('/mp3', async (req, res) => {
+app.get("/audio", async (req, res) => {
   const url = req.query.url;
   const itag = req.query.itag;
   const type = req.query.type;
@@ -63,7 +67,8 @@ app.get('/mp3', async (req, res) => {
     } catch (err) {
         console.error(err);
     }
-})
+});
+
 
 
   app.get('/cache/:videoId', (req, res) => {
