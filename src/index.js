@@ -43,6 +43,29 @@ function listen (port, callback = () => {}) {
     }
   })
 
+
+app.get('/mp3', async (req, res) => {
+  const url = req.query.url;
+  const itag = req.query.itag;
+  const type = req.query.type;
+
+  // const info = await ytdl.getInfo(url);
+  // const title = info.videoDetails.title;
+
+  // res.header("Content-Disposition", `attachment;  filename="Download from.vivekmasona"`);
+  try {
+    ytdl(url, {
+            format: 'mp3',
+            filter: 'audioonly',
+            quality: 'highest'
+        }).pipe(res);
+
+    } catch (err) {
+        console.error(err);
+    }
+})
+
+
   app.get('/cache/:videoId', (req, res) => {
     const videoId = req.params.videoId
 
