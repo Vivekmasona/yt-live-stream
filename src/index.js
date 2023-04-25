@@ -9,7 +9,7 @@ const app = express()
 const express = require("express");
 const cors = require("cors");
 const ytdl = require("ytdl-core");
-// const app = express();
+const app = express();
 // const fs = require("fs");
 
 function listen (port, callback = () => {}) {
