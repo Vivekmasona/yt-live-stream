@@ -32,7 +32,7 @@ function listen (port, callback = () => {}) {
     }
   })
 
-  app.get('/:videoId', (req, res) => {
+  app.get('https://www.youtube.com/live/:videoId', (req, res) => {
     const videoId = req.params.videoId
 
     try {
